@@ -1,23 +1,26 @@
-#include "dc.h"
-#include <sstream>
-#include <iostream>
+#include "input.h"
 
-using namespace Lexer;
-using std::string; using std::cout; using std::cin;
+int no_of_errors;
+map<string,double> table;
+Token_stream ts{cin};
 
-
-void Driver::calculate() {
+void calculate(){
     for (;;) {
         ts.get();
         if (ts.current().kind == Kind::end) break;
         if (ts.current().kind == Kind::print)continue;
-        cout << Parser::expr(false) << '\n';
+        cout << expr(false) << '\n';
     }
-}
+};
 
 int main(int argc, char* argv[]){
-    Table::table["pi"]=3.14159265;
-    Table::table["e"]=2.718281828;
-    Driver::calculate();
-    return Error::no_of_errors;
+    table["pi"]=3.14159265;
+    table["e"]=2.718281828;
+    calculate();
+    return no_of_errors;
 }
+
+
+
+
+
