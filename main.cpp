@@ -1,4 +1,4 @@
-#include "input.h"
+#include "parser.h"
 
 int no_of_errors;
 map<string,double> table;
